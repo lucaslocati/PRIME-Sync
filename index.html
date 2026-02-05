@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mapeamento: API 2ª Via x Base Unificada</title>
+  <title>Mapeamento: APIs x Base Unificada</title>
   <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -43,9 +43,9 @@
       background: #1f2937;
     }
     .col-campo-api {
-      width: 170px;
-      min-width: 170px;
-      max-width: 170px;
+      width: 220px;
+      min-width: 220px;
+      max-width: 220px;
       word-break: break-word;
     }
   </style>
@@ -57,202 +57,308 @@
     const { useState, useRef, useEffect } = React;
 
     const initialData = [
+      // ========================================
+      // API: EMISSAO DIPLOMA (2a Via)
+      // ========================================
+
       // DADOS DO ALUNO
-      { categoria: "Dados do Aluno", campo: "alunoID", descricao: "Matrícula do estudante", tipo: "String", obrigatorio: "Sim", baseUnif: "COD_ALUNO", tabela: "ALUNO_CURSO", exemplo: "19304438", status: "green", obs: "" },
-      { categoria: "Dados do Aluno", campo: "alunoNome", descricao: "Nome completo do aluno", tipo: "String", obrigatorio: "Sim", baseUnif: "NOME_ALUNO", tabela: "ALUNO_CURSO", exemplo: "Gabriela Pereira Afonso", status: "green", obs: "Máx 100 caracteres" },
-      { categoria: "Dados do Aluno", campo: "alunoNomeSocial", descricao: "Nome social do aluno", tipo: "String", obrigatorio: "Não", baseUnif: "—", tabela: "—", exemplo: "", status: "gray", obs: "Máx 100 caracteres" },
-      { categoria: "Dados do Aluno", campo: "alunoSexo", descricao: "Sexo (M ou F)", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Valores: M ou F" },
-      { categoria: "Dados do Aluno", campo: "alunoDataNascimento", descricao: "Data de nascimento", tipo: "Data (ISO 8601)", obrigatorio: "Sim", baseUnif: "DT_NASCIMENTO", tabela: "ALUNO_CURSO", exemplo: "1974-09-21", status: "green", obs: "Formato: AAAA-MM-DD" },
-      { categoria: "Dados do Aluno", campo: "alunoNacionalidade", descricao: "Nacionalidade", tipo: "String", obrigatorio: "Sim", baseUnif: "NACIONALIDADE", tabela: "ALUNO_CURSO", exemplo: "Brasileira", status: "green", obs: "Tabela padrão de referência" },
-      { categoria: "Dados do Aluno", campo: "alunoPaisNascimento", descricao: "País de nascimento", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Tabela padrão de referência" },
-      { categoria: "Dados do Aluno", campo: "alunoMunicipioNascimentoCodigoIBGE", descricao: "Código IBGE do município de nascimento", tipo: "String", obrigatorio: "Sim*", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrigatório para brasileiros" },
-      { categoria: "Dados do Aluno", campo: "alunoMunicipioNascimentoDescricao", descricao: "Nome do município de nascimento", tipo: "String", obrigatorio: "Sim*", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrigatório para brasileiros" },
-      { categoria: "Dados do Aluno", campo: "alunoUFNascimento", descricao: "UF de nascimento", tipo: "String", obrigatorio: "Sim*", baseUnif: "UF", tabela: "ALUNO_CURSO", exemplo: "SP", status: "yellow", obs: "Obrigatório para brasileiros. Verificar se é UF de nascimento ou endereço" },
-      { categoria: "Dados do Aluno", campo: "alunoCPF", descricao: "CPF do aluno (11 dígitos)", tipo: "String", obrigatorio: "Sim", baseUnif: "CPF", tabela: "ALUNO_CURSO", exemplo: "400.598.597-26", status: "green", obs: "11 dígitos, evitar tipo numérico" },
-      { categoria: "Dados do Aluno", campo: "alunoRG.tipo", descricao: "Tipo do documento (RG, RNM, CRNM)", tipo: "String", obrigatorio: "Sim", baseUnif: "TIPO_DOC_IDENT", tabela: "ALUNO_CURSO", exemplo: "Carteira", status: "green", obs: "DE-PARA para adaptar ao PRIME" },
-      { categoria: "Dados do Aluno", campo: "alunoRG.numero", descricao: "Número do documento", tipo: "String", obrigatorio: "Sim", baseUnif: "NUM_RG", tabela: "ALUNO_CURSO", exemplo: "4.136.463-7", status: "green", obs: "Pode conter dígitos e traços" },
-      { categoria: "Dados do Aluno", campo: "alunoRG.uf", descricao: "UF do documento", tipo: "String", obrigatorio: "Sim*", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrigatório para brasileiros" },
-      { categoria: "Dados do Aluno", campo: "alunoRG.orgaoExpedidor", descricao: "Órgão expedidor", tipo: "String", obrigatorio: "Não**", baseUnif: "ORGAO_EXP", tabela: "ALUNO_CURSO", exemplo: "Instituto de Identificação do Paraná", status: "gray", obs: "Não obrigatório quando tipo é RG" },
+      { api: "Emissao Diploma", categoria: "Dados do Aluno", campo: "alunoID", descricao: "Matricula do estudante", tipo: "String", obrigatorio: "Sim", baseUnif: "COD_ALUNO", tabela: "ALUNO_CURSO", exemplo: "19304438", status: "green", obs: "" },
+      { api: "Emissao Diploma", categoria: "Dados do Aluno", campo: "alunoNome", descricao: "Nome completo do aluno", tipo: "String", obrigatorio: "Sim", baseUnif: "NOME_ALUNO", tabela: "ALUNO_CURSO", exemplo: "Gabriela Pereira Afonso", status: "green", obs: "Max 100 caracteres" },
+      { api: "Emissao Diploma", categoria: "Dados do Aluno", campo: "alunoNomeSocial", descricao: "Nome social do aluno", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Max 100 caracteres" },
+      { api: "Emissao Diploma", categoria: "Dados do Aluno", campo: "alunoSexo", descricao: "Sexo (M ou F)", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Valores: M ou F" },
+      { api: "Emissao Diploma", categoria: "Dados do Aluno", campo: "alunoDataNascimento", descricao: "Data de nascimento", tipo: "Data (ISO 8601)", obrigatorio: "Sim", baseUnif: "DT_NASCIMENTO", tabela: "ALUNO_CURSO", exemplo: "1974-09-21", status: "green", obs: "Formato: AAAA-MM-DD" },
+      { api: "Emissao Diploma", categoria: "Dados do Aluno", campo: "alunoNacionalidade", descricao: "Nacionalidade", tipo: "String", obrigatorio: "Sim", baseUnif: "NACIONALIDADE", tabela: "ALUNO_CURSO", exemplo: "Brasileira", status: "green", obs: "Tabela padrao de referencia" },
+      { api: "Emissao Diploma", categoria: "Dados do Aluno", campo: "alunoPaisNascimento", descricao: "Pais de nascimento", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Tabela padrao de referencia" },
+      { api: "Emissao Diploma", categoria: "Dados do Aluno", campo: "alunoMunicipioNascimentoCodigoIBGE", descricao: "Codigo IBGE do municipio de nascimento", tipo: "String", obrigatorio: "Sim*", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrigatorio para brasileiros" },
+      { api: "Emissao Diploma", categoria: "Dados do Aluno", campo: "alunoMunicipioNascimentoDescricao", descricao: "Nome do municipio de nascimento", tipo: "String", obrigatorio: "Sim*", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrigatorio para brasileiros" },
+      { api: "Emissao Diploma", categoria: "Dados do Aluno", campo: "alunoUFNascimento", descricao: "UF de nascimento", tipo: "String", obrigatorio: "Sim*", baseUnif: "UF", tabela: "ALUNO_CURSO", exemplo: "SP", status: "yellow", obs: "Obrigatorio para brasileiros. Verificar se e UF de nascimento ou endereco" },
+      { api: "Emissao Diploma", categoria: "Dados do Aluno", campo: "alunoCPF", descricao: "CPF do aluno (11 digitos)", tipo: "String", obrigatorio: "Sim", baseUnif: "CPF", tabela: "ALUNO_CURSO", exemplo: "400.598.597-26", status: "green", obs: "11 digitos, evitar tipo numerico" },
+      { api: "Emissao Diploma", categoria: "Dados do Aluno", campo: "alunoRG.tipo", descricao: "Tipo do documento (RG, RNM, CRNM)", tipo: "String", obrigatorio: "Sim", baseUnif: "TIPO_DOC_IDENT", tabela: "ALUNO_CURSO", exemplo: "Carteira", status: "green", obs: "DE-PARA para adaptar ao PRIME" },
+      { api: "Emissao Diploma", categoria: "Dados do Aluno", campo: "alunoRG.numero", descricao: "Numero do documento", tipo: "String", obrigatorio: "Sim", baseUnif: "NUM_RG", tabela: "ALUNO_CURSO", exemplo: "4.136.463-7", status: "green", obs: "Pode conter digitos e tracos" },
+      { api: "Emissao Diploma", categoria: "Dados do Aluno", campo: "alunoRG.uf", descricao: "UF do documento", tipo: "String", obrigatorio: "Sim*", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrigatorio para brasileiros" },
+      { api: "Emissao Diploma", categoria: "Dados do Aluno", campo: "alunoRG.orgaoExpedidor", descricao: "Orgao expedidor", tipo: "String", obrigatorio: "Nao**", baseUnif: "ORGAO_EXP", tabela: "ALUNO_CURSO", exemplo: "Instituto de Identificacao do Parana", status: "red", obs: "Nao obrigatorio quando tipo e RG" },
 
       // GENITORES
-      { categoria: "Genitores", campo: "genitores[]", descricao: "Array de genitores", tipo: "Array<Object>", obrigatorio: "Sim (mín. 1)", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Necessário pelo menos mãe OU pai" },
-      { categoria: "Genitores", campo: "genitores[].genitorNome", descricao: "Nome do genitor", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Genitores", campo: "genitores[].genitorSexo", descricao: "Sexo do genitor (M ou F)", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Valores: M ou F" },
+      { api: "Emissao Diploma", categoria: "Genitores", campo: "genitores[]", descricao: "Array de genitores", tipo: "Array<Object>", obrigatorio: "Sim (min. 1)", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Necessario pelo menos mae OU pai" },
+      { api: "Emissao Diploma", categoria: "Genitores", campo: "genitores[].genitorNome", descricao: "Nome do genitor", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Genitores", campo: "genitores[].genitorSexo", descricao: "Sexo do genitor (M ou F)", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Valores: M ou F" },
 
       // INGRESSO
-      { categoria: "Ingresso", campo: "ingresso.alunoDataIngresso", descricao: "Data de ingresso no curso", tipo: "Data (ISO 8601)", obrigatorio: "Cond.***", baseUnif: "DT_INGRESSO", tabela: "ALUNO_CURSO", exemplo: "1993-01-01", status: "green", obs: "Formato: AAAA-MM-DD" },
-      { categoria: "Ingresso", campo: "ingresso.alunoFormaIngresso", descricao: "Forma de ingresso", tipo: "String", obrigatorio: "Cond.***", baseUnif: "FORMA_INGRESSO", tabela: "ALUNO_CURSO", exemplo: "Vestibular", status: "green", obs: "Ex: Vestibular, ENEM, Transferência" },
+      { api: "Emissao Diploma", categoria: "Ingresso", campo: "ingresso.alunoDataIngresso", descricao: "Data de ingresso no curso", tipo: "Data (ISO 8601)", obrigatorio: "Cond.***", baseUnif: "DT_INGRESSO", tabela: "ALUNO_CURSO", exemplo: "1993-01-01", status: "green", obs: "Formato: AAAA-MM-DD" },
+      { api: "Emissao Diploma", categoria: "Ingresso", campo: "ingresso.alunoFormaIngresso", descricao: "Forma de ingresso", tipo: "String", obrigatorio: "Cond.***", baseUnif: "FORMA_INGRESSO", tabela: "ALUNO_CURSO", exemplo: "Vestibular", status: "green", obs: "Ex: Vestibular, ENEM, Transferencia" },
 
-      // CONCLUSÃO
-      { categoria: "Conclusão", campo: "conclusao.alunoDataConclusao", descricao: "Data de conclusão do curso", tipo: "Data (ISO 8601)", obrigatorio: "Sim (formados)", baseUnif: "DATA_CONCLUSAO", tabela: "ALUNO_CURSO", exemplo: "1997-02-05", status: "green", obs: "Obrigatório para formados" },
-      { categoria: "Conclusão", campo: "conclusao.alunoPeriodoConclusao", descricao: "Período de conclusão (ex: 2024/2)", tipo: "String", obrigatorio: "Sim (formados)", baseUnif: "—", tabela: "—", exemplo: "", status: "yellow", obs: "Pode derivar de DATA_CONCLUSAO" },
-      { categoria: "Conclusão", campo: "conclusao.alunoDataColacao", descricao: "Data da colação de grau", tipo: "Data (ISO 8601)", obrigatorio: "Sim********", baseUnif: "DT_COLACAO_GRAU", tabela: "ALUNO_CURSO", exemplo: "1998-02-05", status: "green", obs: "Obrig. Diploma/Hist. Formado, não obrig. hist. parcial" },
+      // CONCLUSAO
+      { api: "Emissao Diploma", categoria: "Conclusao", campo: "conclusao.alunoDataConclusao", descricao: "Data de conclusao do curso", tipo: "Data (ISO 8601)", obrigatorio: "Sim (formados)", baseUnif: "DATA_CONCLUSAO", tabela: "ALUNO_CURSO", exemplo: "1997-02-05", status: "green", obs: "Obrigatorio para formados" },
+      { api: "Emissao Diploma", categoria: "Conclusao", campo: "conclusao.alunoPeriodoConclusao", descricao: "Periodo de conclusao (ex: 2024/2)", tipo: "String", obrigatorio: "Sim (formados)", baseUnif: "—", tabela: "—", exemplo: "", status: "yellow", obs: "Pode derivar de DATA_CONCLUSAO" },
+      { api: "Emissao Diploma", categoria: "Conclusao", campo: "conclusao.alunoDataColacao", descricao: "Data da colacao de grau", tipo: "Data (ISO 8601)", obrigatorio: "Sim********", baseUnif: "DT_COLACAO_GRAU", tabela: "ALUNO_CURSO", exemplo: "1998-02-05", status: "green", obs: "Obrig. Diploma/Hist. Formado, nao obrig. hist. parcial" },
 
       // DIPLOMA
-      { categoria: "Diploma", campo: "diploma.livroRegistro", descricao: "Livro de registro do diploma", tipo: "String", obrigatorio: "Sim********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. Diploma/Hist. Formado, não obrig. hist. parcial" },
-      { categoria: "Diploma", campo: "diploma.numeroFolha", descricao: "Número da folha", tipo: "String", obrigatorio: "Sim********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. Diploma/Hist. Formado, não obrig. hist. parcial" },
-      { categoria: "Diploma", campo: "diploma.numeroSequencia", descricao: "Número sequência do diploma", tipo: "String", obrigatorio: "Sim********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. Diploma/Hist. Formado, não obrig. hist. parcial" },
-      { categoria: "Diploma", campo: "diploma.numeroRegistro", descricao: "Número de registro do diploma", tipo: "String", obrigatorio: "Sim********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. Diploma/Hist. Formado, não obrig. hist. parcial" },
-      { categoria: "Diploma", campo: "diploma.dataRegistro", descricao: "Data de registro do diploma", tipo: "Data (ISO 8601)", obrigatorio: "Sim********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. Diploma/Hist. Formado, não obrig. hist. parcial" },
-      { categoria: "Diploma", campo: "diploma.processo", descricao: "Número do processo", tipo: "String", obrigatorio: "Sim********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. Diploma/Hist. Formado, não obrig. hist. parcial" },
-      { categoria: "Diploma", campo: "diploma.dataExpedicao", descricao: "Data de expedição do diploma", tipo: "Data (ISO 8601)", obrigatorio: "Sim********", baseUnif: "DT_EXP_DIPLOMA", tabela: "ALUNO_CURSO", exemplo: "1998-02-05", status: "green", obs: "Obrig. Diploma/Hist. Formado, não obrig. hist. parcial" },
+      { api: "Emissao Diploma", categoria: "Diploma", campo: "diploma.livroRegistro", descricao: "Livro de registro do diploma", tipo: "String", obrigatorio: "Sim********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. Diploma/Hist. Formado, nao obrig. hist. parcial" },
+      { api: "Emissao Diploma", categoria: "Diploma", campo: "diploma.numeroFolha", descricao: "Numero da folha", tipo: "String", obrigatorio: "Sim********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. Diploma/Hist. Formado, nao obrig. hist. parcial" },
+      { api: "Emissao Diploma", categoria: "Diploma", campo: "diploma.numeroSequencia", descricao: "Numero sequencia do diploma", tipo: "String", obrigatorio: "Sim********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. Diploma/Hist. Formado, nao obrig. hist. parcial" },
+      { api: "Emissao Diploma", categoria: "Diploma", campo: "diploma.numeroRegistro", descricao: "Numero de registro do diploma", tipo: "String", obrigatorio: "Sim********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. Diploma/Hist. Formado, nao obrig. hist. parcial" },
+      { api: "Emissao Diploma", categoria: "Diploma", campo: "diploma.dataRegistro", descricao: "Data de registro do diploma", tipo: "Data (ISO 8601)", obrigatorio: "Sim********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. Diploma/Hist. Formado, nao obrig. hist. parcial" },
+      { api: "Emissao Diploma", categoria: "Diploma", campo: "diploma.processo", descricao: "Numero do processo", tipo: "String", obrigatorio: "Sim********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. Diploma/Hist. Formado, nao obrig. hist. parcial" },
+      { api: "Emissao Diploma", categoria: "Diploma", campo: "diploma.dataExpedicao", descricao: "Data de expedicao do diploma", tipo: "Data (ISO 8601)", obrigatorio: "Sim********", baseUnif: "DT_EXP_DIPLOMA", tabela: "ALUNO_CURSO", exemplo: "1998-02-05", status: "green", obs: "Obrig. Diploma/Hist. Formado, nao obrig. hist. parcial" },
 
-      // HISTÓRICO
-      { categoria: "Histórico", campo: "historico[]", descricao: "Array de disciplinas cursadas", tipo: "Array<Object>", obrigatorio: "Sim", baseUnif: "—", tabela: "HISTORICO_ESCOLAR", exemplo: "", status: "green", obs: "" },
-      { categoria: "Histórico", campo: "historico[].idDisciplina", descricao: "ID da disciplina", tipo: "String", obrigatorio: "Não", baseUnif: "ID_DISCIPLINA", tabela: "HISTORICO_ESCOLAR", exemplo: "1994/1HF031301", status: "gray", obs: "" },
-      { categoria: "Histórico", campo: "historico[].disciplina", descricao: "Nome da disciplina", tipo: "String", obrigatorio: "Sim", baseUnif: "DISCIPLINA", tabela: "HISTORICO_ESCOLAR", exemplo: "Filosofia II", status: "green", obs: "" },
-      { categoria: "Histórico", campo: "historico[].nota", descricao: "Nota final", tipo: "String", obrigatorio: "Não", baseUnif: "MEDIA_FINAL", tabela: "HISTORICO_ESCOLAR", exemplo: "8.0", status: "gray", obs: "Ex: 8.60" },
-      { categoria: "Histórico", campo: "historico[].periodo", descricao: "Período cursado (ex: 2024/1)", tipo: "String", obrigatorio: "Sim", baseUnif: "ANO_SEM_DISC", tabela: "HISTORICO_ESCOLAR", exemplo: "1994/1", status: "green", obs: "" },
-      { categoria: "Histórico", campo: "historico[].cargaHoraria", descricao: "Carga horária da disciplina", tipo: "String", obrigatorio: "Sim", baseUnif: "HORA_RELOGIO", tabela: "HISTORICO_ESCOLAR", exemplo: "", status: "green", obs: "⚠️ Confirmar com o Lucas se seria esse campo mesmo" },
-      { categoria: "Histórico", campo: "historico[].resultado", descricao: "Resultado (Aprovado, Reprovado)", tipo: "String", obrigatorio: "Sim", baseUnif: "RESULTADO", tabela: "HISTORICO_ESCOLAR", exemplo: "Aprovado", status: "green", obs: "" },
-      { categoria: "Histórico", campo: "historico[].ciclo", descricao: "Ciclo/Período do curso", tipo: "Integer", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Conforme vigência do curso" },
-      { categoria: "Histórico", campo: "historico[].percentualFrequencia", descricao: "Percentual de frequência", tipo: "Decimal", obrigatorio: "Não", baseUnif: "PERC_FREQUENCIA", tabela: "HISTORICO_ESCOLAR", exemplo: "97", status: "gray", obs: "Ex: 75.50 (duas casas decimais)" },
-      { categoria: "Histórico", campo: "historico[].docente.docenteNome", descricao: "Nome do professor", tipo: "String", obrigatorio: "Não", baseUnif: "PROFESSOR_TITULACAO", tabela: "HISTORICO_ESCOLAR", exemplo: "", status: "yellow", obs: "Campo único com texto corrido, precisa fazer parse" },
-      { categoria: "Histórico", campo: "historico[].docente.docenteTitulacao", descricao: "Titulação do professor", tipo: "String", obrigatorio: "Não", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Ex: Doutorado, Mestrado" },
-      { categoria: "Histórico", campo: "historico[].docente.docenteCpf", descricao: "CPF do professor", tipo: "String", obrigatorio: "Não", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      // HISTORICO
+      { api: "Emissao Diploma", categoria: "Historico", campo: "historico[]", descricao: "Array de disciplinas cursadas", tipo: "Array<Object>", obrigatorio: "Sim", baseUnif: "—", tabela: "HISTORICO_ESCOLAR", exemplo: "", status: "green", obs: "" },
+      { api: "Emissao Diploma", categoria: "Historico", campo: "historico[].idDisciplina", descricao: "ID da disciplina", tipo: "String", obrigatorio: "Nao", baseUnif: "ID_DISCIPLINA", tabela: "HISTORICO_ESCOLAR", exemplo: "1994/1HF031301", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Historico", campo: "historico[].disciplina", descricao: "Nome da disciplina", tipo: "String", obrigatorio: "Sim", baseUnif: "DISCIPLINA", tabela: "HISTORICO_ESCOLAR", exemplo: "Filosofia II", status: "green", obs: "" },
+      { api: "Emissao Diploma", categoria: "Historico", campo: "historico[].nota", descricao: "Nota final", tipo: "String", obrigatorio: "Nao", baseUnif: "MEDIA_FINAL", tabela: "HISTORICO_ESCOLAR", exemplo: "8.0", status: "red", obs: "Ex: 8.60" },
+      { api: "Emissao Diploma", categoria: "Historico", campo: "historico[].periodo", descricao: "Periodo cursado (ex: 2024/1)", tipo: "String", obrigatorio: "Sim", baseUnif: "ANO_SEM_DISC", tabela: "HISTORICO_ESCOLAR", exemplo: "1994/1", status: "green", obs: "" },
+      { api: "Emissao Diploma", categoria: "Historico", campo: "historico[].cargaHoraria", descricao: "Carga horaria da disciplina", tipo: "String", obrigatorio: "Sim", baseUnif: "HORA_RELOGIO", tabela: "HISTORICO_ESCOLAR", exemplo: "", status: "green", obs: "Confirmar com o Lucas se seria esse campo mesmo" },
+      { api: "Emissao Diploma", categoria: "Historico", campo: "historico[].resultado", descricao: "Resultado (Aprovado, Reprovado)", tipo: "String", obrigatorio: "Sim", baseUnif: "RESULTADO", tabela: "HISTORICO_ESCOLAR", exemplo: "Aprovado", status: "green", obs: "" },
+      { api: "Emissao Diploma", categoria: "Historico", campo: "historico[].ciclo", descricao: "Ciclo/Periodo do curso", tipo: "Integer", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Conforme vigencia do curso" },
+      { api: "Emissao Diploma", categoria: "Historico", campo: "historico[].percentualFrequencia", descricao: "Percentual de frequencia", tipo: "Decimal", obrigatorio: "Nao", baseUnif: "PERC_FREQUENCIA", tabela: "HISTORICO_ESCOLAR", exemplo: "97", status: "red", obs: "Ex: 75.50 (duas casas decimais)" },
+      { api: "Emissao Diploma", categoria: "Historico", campo: "historico[].docente.docenteNome", descricao: "Nome do professor", tipo: "String", obrigatorio: "Nao", baseUnif: "PROFESSOR_TITULACAO", tabela: "HISTORICO_ESCOLAR", exemplo: "", status: "yellow", obs: "Campo unico com texto corrido, precisa fazer parse" },
+      { api: "Emissao Diploma", categoria: "Historico", campo: "historico[].docente.docenteTitulacao", descricao: "Titulacao do professor", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Ex: Doutorado, Mestrado" },
+      { api: "Emissao Diploma", categoria: "Historico", campo: "historico[].docente.docenteCpf", descricao: "CPF do professor", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
 
       // ATIVIDADE COMPLEMENTAR
-      { categoria: "Ativ. Complementar", campo: "atividadeComplementar[]", descricao: "Array de atividades complementares", tipo: "Array<Object>", obrigatorio: "Não", baseUnif: "HORAS_ATIVIDADE", tabela: "HISTORICO_ESCOLAR", exemplo: "10", status: "yellow", obs: "Só temos o total de horas" },
-      { categoria: "Ativ. Complementar", campo: "atividadeComplementar[].codigo", descricao: "Código da atividade", tipo: "String", obrigatorio: "Não", baseUnif: "—", tabela: "—", exemplo: "", status: "gray", obs: "" },
-      { categoria: "Ativ. Complementar", campo: "atividadeComplementar[].dataInicio", descricao: "Data de início", tipo: "Data (ISO 8601)", obrigatorio: "Sim****", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrigatório se informar ativ. complementar" },
-      { categoria: "Ativ. Complementar", campo: "atividadeComplementar[].dataFim", descricao: "Data de fim", tipo: "Data (ISO 8601)", obrigatorio: "Sim****", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrigatório se informar ativ. complementar" },
-      { categoria: "Ativ. Complementar", campo: "atividadeComplementar[].descricao", descricao: "Descrição da atividade", tipo: "String", obrigatorio: "Não", baseUnif: "—", tabela: "—", exemplo: "", status: "gray", obs: "" },
-      { categoria: "Ativ. Complementar", campo: "atividadeComplementar[].tipo", descricao: "Tipo da atividade", tipo: "String", obrigatorio: "Não", baseUnif: "—", tabela: "—", exemplo: "", status: "gray", obs: "Ex: Disciplina Isolada, Estágio Curricular não Obrigatório" },
-      { categoria: "Ativ. Complementar", campo: "atividadeComplementar[].chHoraRelogio", descricao: "Carga horária em hora relógio", tipo: "String", obrigatorio: "Sim****", baseUnif: "HORAS_ATIVIDADE", tabela: "HISTORICO_ESCOLAR", exemplo: "", status: "yellow", obs: "⚠️ Confirmar com o Lucas se seria esse campo mesmo" },
-      { categoria: "Ativ. Complementar", campo: "atividadeComplementar[].docenteAprovador.docenteNome", descricao: "Nome do docente aprovador", tipo: "String", obrigatorio: "Sim****", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrigatório se informar ativ. complementar" },
-      { categoria: "Ativ. Complementar", campo: "atividadeComplementar[].docenteAprovador.docenteTitulacao", descricao: "Titulação do docente aprovador", tipo: "String", obrigatorio: "Sim****", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Ex: Doutorado. Obrigatório se informar ativ. complementar" },
+      { api: "Emissao Diploma", categoria: "Ativ. Complementar", campo: "atividadeComplementar[]", descricao: "Array de atividades complementares", tipo: "Array<Object>", obrigatorio: "Nao", baseUnif: "HORAS_ATIVIDADE", tabela: "HISTORICO_ESCOLAR", exemplo: "10", status: "yellow", obs: "So temos o total de horas" },
+      { api: "Emissao Diploma", categoria: "Ativ. Complementar", campo: "atividadeComplementar[].codigo", descricao: "Codigo da atividade", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Ativ. Complementar", campo: "atividadeComplementar[].dataInicio", descricao: "Data de inicio", tipo: "Data (ISO 8601)", obrigatorio: "Sim****", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrigatorio se informar ativ. complementar" },
+      { api: "Emissao Diploma", categoria: "Ativ. Complementar", campo: "atividadeComplementar[].dataFim", descricao: "Data de fim", tipo: "Data (ISO 8601)", obrigatorio: "Sim****", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrigatorio se informar ativ. complementar" },
+      { api: "Emissao Diploma", categoria: "Ativ. Complementar", campo: "atividadeComplementar[].descricao", descricao: "Descricao da atividade", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Ativ. Complementar", campo: "atividadeComplementar[].tipo", descricao: "Tipo da atividade", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Ex: Disciplina Isolada, Estagio Curricular nao Obrigatorio" },
+      { api: "Emissao Diploma", categoria: "Ativ. Complementar", campo: "atividadeComplementar[].chHoraRelogio", descricao: "Carga horaria em hora relogio", tipo: "String", obrigatorio: "Sim****", baseUnif: "HORAS_ATIVIDADE", tabela: "HISTORICO_ESCOLAR", exemplo: "", status: "yellow", obs: "Confirmar com o Lucas se seria esse campo mesmo" },
+      { api: "Emissao Diploma", categoria: "Ativ. Complementar", campo: "atividadeComplementar[].docenteAprovador.docenteNome", descricao: "Nome do docente aprovador", tipo: "String", obrigatorio: "Sim****", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrigatorio se informar ativ. complementar" },
+      { api: "Emissao Diploma", categoria: "Ativ. Complementar", campo: "atividadeComplementar[].docenteAprovador.docenteTitulacao", descricao: "Titulacao do docente aprovador", tipo: "String", obrigatorio: "Sim****", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Ex: Doutorado. Obrigatorio se informar ativ. complementar" },
 
-      // ESTÁGIO
-      { categoria: "Estágio", campo: "estagio", descricao: "Dados do estágio", tipo: "Object", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Estrutura completa não existe" },
-      { categoria: "Estágio", campo: "estagio.codigoUnidadeCurricular", descricao: "Código da unidade curricular", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Código único: letras, dígitos, hífen ou ponto" },
-      { categoria: "Estágio", campo: "estagio.dataInicioEstagio", descricao: "Data de início do estágio", tipo: "Data (ISO 8601)", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Estágio", campo: "estagio.dataFimEstagio", descricao: "Data de fim do estágio", tipo: "Data (ISO 8601)", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Estágio", campo: "estagio.cargaHorariaEstagio", descricao: "Carga horária do estágio", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Ex: 80.00" },
-      { categoria: "Estágio", campo: "estagio.docenteOrientador.docenteNome", descricao: "Nome do orientador", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Estágio", campo: "estagio.docenteOrientador.docenteTitulacao", descricao: "Titulação do orientador", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Ex: Doutorado" },
+      // ESTAGIO
+      { api: "Emissao Diploma", categoria: "Estagio", campo: "estagio", descricao: "Dados do estagio", tipo: "Object", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Estrutura completa nao existe" },
+      { api: "Emissao Diploma", categoria: "Estagio", campo: "estagio.codigoUnidadeCurricular", descricao: "Codigo da unidade curricular", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Codigo unico: letras, digitos, hifen ou ponto" },
+      { api: "Emissao Diploma", categoria: "Estagio", campo: "estagio.dataInicioEstagio", descricao: "Data de inicio do estagio", tipo: "Data (ISO 8601)", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Estagio", campo: "estagio.dataFimEstagio", descricao: "Data de fim do estagio", tipo: "Data (ISO 8601)", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Estagio", campo: "estagio.cargaHorariaEstagio", descricao: "Carga horaria do estagio", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Ex: 80.00" },
+      { api: "Emissao Diploma", categoria: "Estagio", campo: "estagio.docenteOrientador.docenteNome", descricao: "Nome do orientador", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Estagio", campo: "estagio.docenteOrientador.docenteTitulacao", descricao: "Titulacao do orientador", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Ex: Doutorado" },
 
-      // SITUAÇÃO DO ALUNO
-      { categoria: "Situação Aluno", campo: "situacaoAluno.alunoCargaHorariaIntgralizada", descricao: "Total de horas concluídas", tipo: "Integer", obrigatorio: "Sim", baseUnif: "TOTAL_HORA_RELOGIO", tabela: "HISTORICO_ESCOLAR", exemplo: "", status: "yellow", obs: "⚠️ Confirmar com o Lucas se seria esse campo mesmo" },
-      { categoria: "Situação Aluno", campo: "situacaoAluno.alunoSituacao", descricao: "Situação do aluno (Aprovado, etc.)", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Ex: Aprovado, Reprovado" },
-      { categoria: "Situação Aluno", campo: "situacaoAluno.alunoDataEmissaoHistorico", descricao: "Data de emissão do histórico", tipo: "Data (ISO 8601)", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Situação Aluno", campo: "situacaoAluno.alunoHoraEmissaoHistorico", descricao: "Hora de emissão do histórico", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Formato: HH:MM:SS" },
+      // SITUACAO DO ALUNO
+      { api: "Emissao Diploma", categoria: "Situacao Aluno", campo: "situacaoAluno.alunoCargaHorariaIntgralizada", descricao: "Total de horas concluidas", tipo: "Integer", obrigatorio: "Sim", baseUnif: "TOTAL_HORA_RELOGIO", tabela: "HISTORICO_ESCOLAR", exemplo: "", status: "yellow", obs: "Confirmar com o Lucas se seria esse campo mesmo" },
+      { api: "Emissao Diploma", categoria: "Situacao Aluno", campo: "situacaoAluno.alunoSituacao", descricao: "Situacao do aluno (Aprovado, etc.)", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Ex: Aprovado, Reprovado" },
+      { api: "Emissao Diploma", categoria: "Situacao Aluno", campo: "situacaoAluno.alunoDataEmissaoHistorico", descricao: "Data de emissao do historico", tipo: "Data (ISO 8601)", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Situacao Aluno", campo: "situacaoAluno.alunoHoraEmissaoHistorico", descricao: "Hora de emissao do historico", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Formato: HH:MM:SS" },
 
       // ENADE
-      { categoria: "ENADE", campo: "enade.situacao", descricao: "Situação no ENADE", tipo: "String", obrigatorio: "Cond.*****", baseUnif: "OBS_ENADE", tabela: "ALUNO_CURSO", exemplo: "Exame realizado em 29/06/97", status: "yellow", obs: "Ex: Habilitado, Não Habilitado" },
-      { categoria: "ENADE", campo: "enade.condicao", descricao: "Condição (Ingressante/Concluinte)", tipo: "String", obrigatorio: "Cond.*****", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Ex: Ingressante, Concluinte" },
-      { categoria: "ENADE", campo: "enade.motivo", descricao: "Motivo (se não habilitado)", tipo: "String", obrigatorio: "Cond.*****", baseUnif: "OBS_ENADE", tabela: "ALUNO_CURSO", exemplo: "", status: "yellow", obs: "Obrig. se situação 'Não Habilitado'" },
-      { categoria: "ENADE", campo: "enade.edicao", descricao: "Edição/Ano do ENADE", tipo: "Integer", obrigatorio: "Cond.*****", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Ano. Ex: 2021. Obrig. se Habilitado/Irregular" },
-      { categoria: "ENADE", campo: "enade.dataProva", descricao: "Data da prova ENADE", tipo: "Data (ISO 8601)", obrigatorio: "Cond.*****", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "ENADE", campo: "enade.situacao", descricao: "Situacao no ENADE", tipo: "String", obrigatorio: "Cond.*****", baseUnif: "OBS_ENADE", tabela: "ALUNO_CURSO", exemplo: "Exame realizado em 29/06/97", status: "yellow", obs: "Ex: Habilitado, Nao Habilitado" },
+      { api: "Emissao Diploma", categoria: "ENADE", campo: "enade.condicao", descricao: "Condicao (Ingressante/Concluinte)", tipo: "String", obrigatorio: "Cond.*****", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Ex: Ingressante, Concluinte" },
+      { api: "Emissao Diploma", categoria: "ENADE", campo: "enade.motivo", descricao: "Motivo (se nao habilitado)", tipo: "String", obrigatorio: "Cond.*****", baseUnif: "OBS_ENADE", tabela: "ALUNO_CURSO", exemplo: "", status: "yellow", obs: "Obrig. se situacao 'Nao Habilitado'" },
+      { api: "Emissao Diploma", categoria: "ENADE", campo: "enade.edicao", descricao: "Edicao/Ano do ENADE", tipo: "Integer", obrigatorio: "Cond.*****", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Ano. Ex: 2021. Obrig. se Habilitado/Irregular" },
+      { api: "Emissao Diploma", categoria: "ENADE", campo: "enade.dataProva", descricao: "Data da prova ENADE", tipo: "Data (ISO 8601)", obrigatorio: "Cond.*****", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
 
       // CURSO
-      { categoria: "Curso", campo: "curso.cursoDescricao", descricao: "Nome completo do curso", tipo: "String", obrigatorio: "Sim", baseUnif: "NOME_CURSO", tabela: "CURSO", exemplo: "", status: "green", obs: "" },
-      { categoria: "Curso", campo: "curso.cursoEMEC", descricao: "Código EMEC do curso", tipo: "String", obrigatorio: "Sim******", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. desde que não esteja em tramitação" },
-      { categoria: "Curso", campo: "curso.cursoHabilitacao", descricao: "Habilitação do curso", tipo: "String", obrigatorio: "Não", baseUnif: "DESC_HABILITACAO", tabela: "HISTORICO_ESCOLAR", exemplo: "Descrição...", status: "gray", obs: "" },
-      { categoria: "Curso", campo: "curso.cursoModalidade", descricao: "Modalidade (Presencial, EAD)", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Curso", campo: "curso.cursoTituloConferido", descricao: "Título conferido (Bacharel, etc.)", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Curso", campo: "curso.cursoGrauConferido", descricao: "Grau conferido (Bacharelado, etc.)", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Curso", campo: "curso.cursoCargaHorariaTotal", descricao: "Carga horária total do curso", tipo: "Integer", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Curso", campo: "curso.cursoDataHabilitacao", descricao: "Data de habilitação do curso", tipo: "String", obrigatorio: "Não", baseUnif: "—", tabela: "—", exemplo: "", status: "gray", obs: "" },
+      { api: "Emissao Diploma", categoria: "Curso", campo: "curso.cursoDescricao", descricao: "Nome completo do curso", tipo: "String", obrigatorio: "Sim", baseUnif: "NOME_CURSO", tabela: "CURSO", exemplo: "", status: "green", obs: "" },
+      { api: "Emissao Diploma", categoria: "Curso", campo: "curso.cursoEMEC", descricao: "Codigo EMEC do curso", tipo: "String", obrigatorio: "Sim******", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. desde que nao esteja em tramitacao" },
+      { api: "Emissao Diploma", categoria: "Curso", campo: "curso.cursoHabilitacao", descricao: "Habilitacao do curso", tipo: "String", obrigatorio: "Nao", baseUnif: "DESC_HABILITACAO", tabela: "HISTORICO_ESCOLAR", exemplo: "Descricao...", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Curso", campo: "curso.cursoModalidade", descricao: "Modalidade (Presencial, EAD)", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Curso", campo: "curso.cursoTituloConferido", descricao: "Titulo conferido (Bacharel, etc.)", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Curso", campo: "curso.cursoGrauConferido", descricao: "Grau conferido (Bacharelado, etc.)", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Curso", campo: "curso.cursoCargaHorariaTotal", descricao: "Carga horaria total do curso", tipo: "Integer", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Curso", campo: "curso.cursoDataHabilitacao", descricao: "Data de habilitacao do curso", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
 
-      // AUTORIZAÇÃO DO CURSO
-      { categoria: "Autorização Curso", campo: "curso.autorizacao.tipo", descricao: "Tipo de autorização", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Ex: Resolução" },
-      { categoria: "Autorização Curso", campo: "curso.autorizacao.numero", descricao: "Número da autorização", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Ex: 330/2019" },
-      { categoria: "Autorização Curso", campo: "curso.autorizacao.data", descricao: "Data da autorização", tipo: "Data (ISO 8601)", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Autorização Curso", campo: "curso.autorizacao.dataPublicacao", descricao: "Data de publicação", tipo: "Data (ISO 8601)", obrigatorio: "Não", baseUnif: "—", tabela: "—", exemplo: "", status: "gray", obs: "" },
-      { categoria: "Autorização Curso", campo: "curso.autorizacao.secaoPublicacao", descricao: "Seção da publicação", tipo: "String", obrigatorio: "Não", baseUnif: "—", tabela: "—", exemplo: "", status: "gray", obs: "" },
-      { categoria: "Autorização Curso", campo: "curso.autorizacao.paginaPublicacao", descricao: "Página da publicação", tipo: "String", obrigatorio: "Não", baseUnif: "—", tabela: "—", exemplo: "", status: "gray", obs: "" },
-      { categoria: "Autorização Curso", campo: "curso.autorizacao.tramitacaoNumeroProcesso", descricao: "Número do processo tramitação", tipo: "String", obrigatorio: "Cond.******", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se em tramitação" },
-      { categoria: "Autorização Curso", campo: "curso.autorizacao.tramitacaoTipoProcesso", descricao: "Tipo de processo tramitação", tipo: "String", obrigatorio: "Cond.******", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se em tramitação" },
-      { categoria: "Autorização Curso", campo: "curso.autorizacao.tramitacaoDataCadastro", descricao: "Data cadastro tramitação", tipo: "Data (ISO 8601)", obrigatorio: "Cond.******", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se em tramitação" },
-      { categoria: "Autorização Curso", campo: "curso.autorizacao.tramitacaoDataProtocolo", descricao: "Data protocolo tramitação", tipo: "Data (ISO 8601)", obrigatorio: "Cond.******", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se em tramitação" },
+      // AUTORIZACAO DO CURSO
+      { api: "Emissao Diploma", categoria: "Autorizacao Curso", campo: "curso.autorizacao.tipo", descricao: "Tipo de autorizacao", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Ex: Resolucao" },
+      { api: "Emissao Diploma", categoria: "Autorizacao Curso", campo: "curso.autorizacao.numero", descricao: "Numero da autorizacao", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Ex: 330/2019" },
+      { api: "Emissao Diploma", categoria: "Autorizacao Curso", campo: "curso.autorizacao.data", descricao: "Data da autorizacao", tipo: "Data (ISO 8601)", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Autorizacao Curso", campo: "curso.autorizacao.dataPublicacao", descricao: "Data de publicacao", tipo: "Data (ISO 8601)", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Autorizacao Curso", campo: "curso.autorizacao.secaoPublicacao", descricao: "Secao da publicacao", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Autorizacao Curso", campo: "curso.autorizacao.paginaPublicacao", descricao: "Pagina da publicacao", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Autorizacao Curso", campo: "curso.autorizacao.tramitacaoNumeroProcesso", descricao: "Numero do processo tramitacao", tipo: "String", obrigatorio: "Cond.******", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se em tramitacao" },
+      { api: "Emissao Diploma", categoria: "Autorizacao Curso", campo: "curso.autorizacao.tramitacaoTipoProcesso", descricao: "Tipo de processo tramitacao", tipo: "String", obrigatorio: "Cond.******", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se em tramitacao" },
+      { api: "Emissao Diploma", categoria: "Autorizacao Curso", campo: "curso.autorizacao.tramitacaoDataCadastro", descricao: "Data cadastro tramitacao", tipo: "Data (ISO 8601)", obrigatorio: "Cond.******", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se em tramitacao" },
+      { api: "Emissao Diploma", categoria: "Autorizacao Curso", campo: "curso.autorizacao.tramitacaoDataProtocolo", descricao: "Data protocolo tramitacao", tipo: "Data (ISO 8601)", obrigatorio: "Cond.******", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se em tramitacao" },
 
       // RECONHECIMENTO DO CURSO
-      { categoria: "Reconhecimento Curso", campo: "curso.reconhecimento.tipo", descricao: "Tipo de reconhecimento", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Reconhecimento Curso", campo: "curso.reconhecimento.numero", descricao: "Número do reconhecimento", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Reconhecimento Curso", campo: "curso.reconhecimento.data", descricao: "Data do reconhecimento", tipo: "Data (ISO 8601)", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Reconhecimento Curso", campo: "curso.reconhecimento.dataPublicacao", descricao: "Data de publicação", tipo: "Data (ISO 8601)", obrigatorio: "Não", baseUnif: "—", tabela: "—", exemplo: "", status: "gray", obs: "" },
-      { categoria: "Reconhecimento Curso", campo: "curso.reconhecimento.tramitacaoNumeroProcesso", descricao: "Número do processo tramitação", tipo: "String", obrigatorio: "Cond.", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se em tramitação" },
-      { categoria: "Reconhecimento Curso", campo: "curso.reconhecimento.tramitacaoTipoProcesso", descricao: "Tipo de processo tramitação", tipo: "String", obrigatorio: "Cond.", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se em tramitação" },
-      { categoria: "Reconhecimento Curso", campo: "curso.reconhecimento.tramitacaoDataCadastro", descricao: "Data cadastro tramitação", tipo: "Data (ISO 8601)", obrigatorio: "Cond.", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se em tramitação" },
-      { categoria: "Reconhecimento Curso", campo: "curso.reconhecimento.tramitacaoDataProtocolo", descricao: "Data protocolo tramitação", tipo: "Data (ISO 8601)", obrigatorio: "Cond.", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se em tramitação" },
+      { api: "Emissao Diploma", categoria: "Reconhecimento Curso", campo: "curso.reconhecimento.tipo", descricao: "Tipo de reconhecimento", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Reconhecimento Curso", campo: "curso.reconhecimento.numero", descricao: "Numero do reconhecimento", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Reconhecimento Curso", campo: "curso.reconhecimento.data", descricao: "Data do reconhecimento", tipo: "Data (ISO 8601)", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Reconhecimento Curso", campo: "curso.reconhecimento.dataPublicacao", descricao: "Data de publicacao", tipo: "Data (ISO 8601)", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Reconhecimento Curso", campo: "curso.reconhecimento.tramitacaoNumeroProcesso", descricao: "Numero do processo tramitacao", tipo: "String", obrigatorio: "Cond.", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se em tramitacao" },
+      { api: "Emissao Diploma", categoria: "Reconhecimento Curso", campo: "curso.reconhecimento.tramitacaoTipoProcesso", descricao: "Tipo de processo tramitacao", tipo: "String", obrigatorio: "Cond.", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se em tramitacao" },
+      { api: "Emissao Diploma", categoria: "Reconhecimento Curso", campo: "curso.reconhecimento.tramitacaoDataCadastro", descricao: "Data cadastro tramitacao", tipo: "Data (ISO 8601)", obrigatorio: "Cond.", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se em tramitacao" },
+      { api: "Emissao Diploma", categoria: "Reconhecimento Curso", campo: "curso.reconhecimento.tramitacaoDataProtocolo", descricao: "Data protocolo tramitacao", tipo: "Data (ISO 8601)", obrigatorio: "Cond.", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se em tramitacao" },
 
-      // RENOVAÇÃO RECONHECIMENTO CURSO
-      { categoria: "Renov. Reconhec. Curso", campo: "curso.renovacaoReconhecimento.tipo", descricao: "Tipo renovação reconhecimento", tipo: "String", obrigatorio: "Cond.*********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se houver renovação" },
-      { categoria: "Renov. Reconhec. Curso", campo: "curso.renovacaoReconhecimento.numero", descricao: "Número renovação reconhecimento", tipo: "String", obrigatorio: "Cond.*********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se houver renovação" },
-      { categoria: "Renov. Reconhec. Curso", campo: "curso.renovacaoReconhecimento.data", descricao: "Data renovação reconhecimento", tipo: "String", obrigatorio: "Cond.*********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se houver renovação" },
-      { categoria: "Renov. Reconhec. Curso", campo: "curso.renovacaoReconhecimento.dataPublicacao", descricao: "Data publicação", tipo: "String", obrigatorio: "Cond.*********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se houver renovação" },
-      { categoria: "Renov. Reconhec. Curso", campo: "curso.renovacaoReconhecimento.numeroDOU", descricao: "Número DOU", tipo: "String", obrigatorio: "Cond.*********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se houver renovação" },
-      { categoria: "Renov. Reconhec. Curso", campo: "curso.renovacaoReconhecimento.tramitacao...", descricao: "Campos de tramitação", tipo: "Object", obrigatorio: "Cond.", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se em tramitação renovação" },
+      // RENOVACAO RECONHECIMENTO CURSO
+      { api: "Emissao Diploma", categoria: "Renov. Reconhec. Curso", campo: "curso.renovacaoReconhecimento.tipo", descricao: "Tipo renovacao reconhecimento", tipo: "String", obrigatorio: "Cond.*********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se houver renovacao" },
+      { api: "Emissao Diploma", categoria: "Renov. Reconhec. Curso", campo: "curso.renovacaoReconhecimento.numero", descricao: "Numero renovacao reconhecimento", tipo: "String", obrigatorio: "Cond.*********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se houver renovacao" },
+      { api: "Emissao Diploma", categoria: "Renov. Reconhec. Curso", campo: "curso.renovacaoReconhecimento.data", descricao: "Data renovacao reconhecimento", tipo: "String", obrigatorio: "Cond.*********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se houver renovacao" },
+      { api: "Emissao Diploma", categoria: "Renov. Reconhec. Curso", campo: "curso.renovacaoReconhecimento.dataPublicacao", descricao: "Data publicacao", tipo: "String", obrigatorio: "Cond.*********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se houver renovacao" },
+      { api: "Emissao Diploma", categoria: "Renov. Reconhec. Curso", campo: "curso.renovacaoReconhecimento.numeroDOU", descricao: "Numero DOU", tipo: "String", obrigatorio: "Cond.*********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se houver renovacao" },
+      { api: "Emissao Diploma", categoria: "Renov. Reconhec. Curso", campo: "curso.renovacaoReconhecimento.tramitacao...", descricao: "Campos de tramitacao", tipo: "Object", obrigatorio: "Cond.", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se em tramitacao renovacao" },
 
-      // ENDEREÇO DO CURSO
-      { categoria: "Endereço Curso", campo: "curso.endereco.logradouro", descricao: "Logradouro", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Endereço Curso", campo: "curso.endereco.numero", descricao: "Número", tipo: "String", obrigatorio: "Não", baseUnif: "—", tabela: "—", exemplo: "", status: "gray", obs: "" },
-      { categoria: "Endereço Curso", campo: "curso.endereco.complemento", descricao: "Complemento", tipo: "String", obrigatorio: "Não", baseUnif: "—", tabela: "—", exemplo: "", status: "gray", obs: "" },
-      { categoria: "Endereço Curso", campo: "curso.endereco.bairro", descricao: "Bairro", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Endereço Curso", campo: "curso.endereco.municipioCodigoIBGE", descricao: "Código IBGE do município", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Endereço Curso", campo: "curso.endereco.municipioDescricao", descricao: "Nome do município", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Endereço Curso", campo: "curso.endereco.uf", descricao: "UF do curso", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Endereço Curso", campo: "curso.endereco.cep", descricao: "CEP", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Formato: 00000-000" },
+      // ENDERECO DO CURSO
+      { api: "Emissao Diploma", categoria: "Endereco Curso", campo: "curso.endereco.logradouro", descricao: "Logradouro", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Endereco Curso", campo: "curso.endereco.numero", descricao: "Numero", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Endereco Curso", campo: "curso.endereco.complemento", descricao: "Complemento", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Endereco Curso", campo: "curso.endereco.bairro", descricao: "Bairro", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Endereco Curso", campo: "curso.endereco.municipioCodigoIBGE", descricao: "Codigo IBGE do municipio", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Endereco Curso", campo: "curso.endereco.municipioDescricao", descricao: "Nome do municipio", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Endereco Curso", campo: "curso.endereco.uf", descricao: "UF do curso", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Endereco Curso", campo: "curso.endereco.cep", descricao: "CEP", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Formato: 00000-000" },
 
       // EMISSORA (IES)
-      { categoria: "Emissora (IES)", campo: "emissora.nome", descricao: "Nome da instituição", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Emissora (IES)", campo: "emissora.codigoEMEC", descricao: "Código EMEC da IES", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Emissora (IES)", campo: "emissora.cnpj", descricao: "CNPJ da IES", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "14 dígitos" },
-      { categoria: "Emissora (IES)", campo: "emissora.endereco.logradouro", descricao: "Logradouro da IES", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Emissora (IES)", campo: "emissora.endereco.numero", descricao: "Número", tipo: "String", obrigatorio: "Não", baseUnif: "—", tabela: "—", exemplo: "", status: "gray", obs: "" },
-      { categoria: "Emissora (IES)", campo: "emissora.endereco.complemento", descricao: "Complemento", tipo: "String", obrigatorio: "Não", baseUnif: "—", tabela: "—", exemplo: "", status: "gray", obs: "" },
-      { categoria: "Emissora (IES)", campo: "emissora.endereco.bairro", descricao: "Bairro da IES", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Emissora (IES)", campo: "emissora.endereco.municipioCodigoIBGE", descricao: "Código IBGE do município", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Emissora (IES)", campo: "emissora.endereco.municipioDescricao", descricao: "Nome do município", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Emissora (IES)", campo: "emissora.endereco.uf", descricao: "UF da IES", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Emissora (IES)", campo: "emissora.endereco.cep", descricao: "CEP da IES", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Formato: 00000-000" },
+      { api: "Emissao Diploma", categoria: "Emissora (IES)", campo: "emissora.nome", descricao: "Nome da instituicao", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Emissora (IES)", campo: "emissora.codigoEMEC", descricao: "Codigo EMEC da IES", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Emissora (IES)", campo: "emissora.cnpj", descricao: "CNPJ da IES", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "14 digitos" },
+      { api: "Emissao Diploma", categoria: "Emissora (IES)", campo: "emissora.endereco.logradouro", descricao: "Logradouro da IES", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Emissora (IES)", campo: "emissora.endereco.numero", descricao: "Numero", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Emissora (IES)", campo: "emissora.endereco.complemento", descricao: "Complemento", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Emissora (IES)", campo: "emissora.endereco.bairro", descricao: "Bairro da IES", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Emissora (IES)", campo: "emissora.endereco.municipioCodigoIBGE", descricao: "Codigo IBGE do municipio", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Emissora (IES)", campo: "emissora.endereco.municipioDescricao", descricao: "Nome do municipio", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Emissora (IES)", campo: "emissora.endereco.uf", descricao: "UF da IES", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Emissora (IES)", campo: "emissora.endereco.cep", descricao: "CEP da IES", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Formato: 00000-000" },
 
       // CREDENCIAMENTO IES
-      { categoria: "Credenciamento IES", campo: "emissora.credenciamento.tipo", descricao: "Tipo de credenciamento", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Ex: Resolução" },
-      { categoria: "Credenciamento IES", campo: "emissora.credenciamento.numero", descricao: "Número do credenciamento", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Credenciamento IES", campo: "emissora.credenciamento.data", descricao: "Data do credenciamento", tipo: "Data (ISO 8601)", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Credenciamento IES", campo: "emissora.credenciamento.veiculoPublicacao", descricao: "Veículo de publicação", tipo: "String", obrigatorio: "Não", baseUnif: "—", tabela: "—", exemplo: "", status: "gray", obs: "" },
-      { categoria: "Credenciamento IES", campo: "emissora.credenciamento.dataPublicacao", descricao: "Data da publicação", tipo: "Data (ISO 8601)", obrigatorio: "Não", baseUnif: "—", tabela: "—", exemplo: "", status: "gray", obs: "" },
-      { categoria: "Credenciamento IES", campo: "emissora.credenciamento.secaoPublicacao", descricao: "Seção da publicação", tipo: "String", obrigatorio: "Não", baseUnif: "—", tabela: "—", exemplo: "", status: "gray", obs: "" },
-      { categoria: "Credenciamento IES", campo: "emissora.credenciamento.paginaPublicacao", descricao: "Página da publicação", tipo: "String", obrigatorio: "Não", baseUnif: "—", tabela: "—", exemplo: "", status: "gray", obs: "" },
-      { categoria: "Credenciamento IES", campo: "emissora.credenciamento.tramitacao...", descricao: "Campos de tramitação", tipo: "Object", obrigatorio: "Cond.", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se em processo de credenciamento" },
+      { api: "Emissao Diploma", categoria: "Credenciamento IES", campo: "emissora.credenciamento.tipo", descricao: "Tipo de credenciamento", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Ex: Resolucao" },
+      { api: "Emissao Diploma", categoria: "Credenciamento IES", campo: "emissora.credenciamento.numero", descricao: "Numero do credenciamento", tipo: "String", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Credenciamento IES", campo: "emissora.credenciamento.data", descricao: "Data do credenciamento", tipo: "Data (ISO 8601)", obrigatorio: "Sim", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Credenciamento IES", campo: "emissora.credenciamento.veiculoPublicacao", descricao: "Veiculo de publicacao", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Credenciamento IES", campo: "emissora.credenciamento.dataPublicacao", descricao: "Data da publicacao", tipo: "Data (ISO 8601)", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Credenciamento IES", campo: "emissora.credenciamento.secaoPublicacao", descricao: "Secao da publicacao", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Credenciamento IES", campo: "emissora.credenciamento.paginaPublicacao", descricao: "Pagina da publicacao", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Credenciamento IES", campo: "emissora.credenciamento.tramitacao...", descricao: "Campos de tramitacao", tipo: "Object", obrigatorio: "Cond.", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se em processo de credenciamento" },
 
       // RECREDENCIAMENTO IES
-      { categoria: "Recredenciamento IES", campo: "emissora.recredenciamento.tipo", descricao: "Tipo recredenciamento", tipo: "String", obrigatorio: "Cond.**********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se credenciamento vencido/em tramitação" },
-      { categoria: "Recredenciamento IES", campo: "emissora.recredenciamento.numero", descricao: "Número recredenciamento", tipo: "String", obrigatorio: "Cond.**********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se credenciamento vencido/em tramitação" },
-      { categoria: "Recredenciamento IES", campo: "emissora.recredenciamento.data", descricao: "Data recredenciamento", tipo: "Data (ISO 8601)", obrigatorio: "Cond.**********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se credenciamento vencido/em tramitação" },
-      { categoria: "Recredenciamento IES", campo: "emissora.recredenciamento.veiculoPublicacao", descricao: "Veículo de publicação", tipo: "String", obrigatorio: "Cond.**********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Recredenciamento IES", campo: "emissora.recredenciamento.dataPublicacao", descricao: "Data da publicação", tipo: "Data (ISO 8601)", obrigatorio: "Cond.**********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Recredenciamento IES", campo: "emissora.recredenciamento.numeroDOU", descricao: "Número DOU", tipo: "String", obrigatorio: "Cond.**********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
-      { categoria: "Recredenciamento IES", campo: "emissora.recredenciamento.tramitacao...", descricao: "Campos de tramitação", tipo: "Object", obrigatorio: "Cond.", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se em tramitação recredenciamento" },
+      { api: "Emissao Diploma", categoria: "Recredenciamento IES", campo: "emissora.recredenciamento.tipo", descricao: "Tipo recredenciamento", tipo: "String", obrigatorio: "Cond.**********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se credenciamento vencido/em tramitacao" },
+      { api: "Emissao Diploma", categoria: "Recredenciamento IES", campo: "emissora.recredenciamento.numero", descricao: "Numero recredenciamento", tipo: "String", obrigatorio: "Cond.**********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se credenciamento vencido/em tramitacao" },
+      { api: "Emissao Diploma", categoria: "Recredenciamento IES", campo: "emissora.recredenciamento.data", descricao: "Data recredenciamento", tipo: "Data (ISO 8601)", obrigatorio: "Cond.**********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se credenciamento vencido/em tramitacao" },
+      { api: "Emissao Diploma", categoria: "Recredenciamento IES", campo: "emissora.recredenciamento.veiculoPublicacao", descricao: "Veiculo de publicacao", tipo: "String", obrigatorio: "Cond.**********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Recredenciamento IES", campo: "emissora.recredenciamento.dataPublicacao", descricao: "Data da publicacao", tipo: "Data (ISO 8601)", obrigatorio: "Cond.**********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Recredenciamento IES", campo: "emissora.recredenciamento.numeroDOU", descricao: "Numero DOU", tipo: "String", obrigatorio: "Cond.**********", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Recredenciamento IES", campo: "emissora.recredenciamento.tramitacao...", descricao: "Campos de tramitacao", tipo: "Object", obrigatorio: "Cond.", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se em tramitacao recredenciamento" },
 
-      // RENOVAÇÃO RECREDENCIAMENTO IES
-      { categoria: "Renov. Recred. IES", campo: "emissora.renovacaoRecredenciamento...", descricao: "Renovação do recredenciamento", tipo: "Object", obrigatorio: "Cond.", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Estrutura similar ao recredenciamento" },
+      // RENOVACAO RECREDENCIAMENTO IES
+      { api: "Emissao Diploma", categoria: "Renov. Recred. IES", campo: "emissora.renovacaoRecredenciamento...", descricao: "Renovacao do recredenciamento", tipo: "Object", obrigatorio: "Cond.", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Estrutura similar ao recredenciamento" },
 
       // POLO (EAD)
-      { categoria: "Polo (EAD)", campo: "polo.poloNome", descricao: "Nome do polo", tipo: "String", obrigatorio: "Cond.*******", baseUnif: "—", tabela: "—", exemplo: "", status: "gray", obs: "Obrig. se informar dados do Polo" },
-      { categoria: "Polo (EAD)", campo: "polo.poloCodigoMEC", descricao: "Código MEC do polo", tipo: "String", obrigatorio: "Cond.*******", baseUnif: "—", tabela: "—", exemplo: "", status: "gray", obs: "Obrig. se informar dados do Polo" },
-      { categoria: "Polo (EAD)", campo: "polo.endereco.logradouro", descricao: "Endereço do polo", tipo: "String", obrigatorio: "Cond.*******", baseUnif: "—", tabela: "—", exemplo: "", status: "gray", obs: "Obrig. se informar dados do Polo" },
-      { categoria: "Polo (EAD)", campo: "polo.endereco.numero", descricao: "Número do endereço", tipo: "String", obrigatorio: "Não", baseUnif: "—", tabela: "—", exemplo: "", status: "gray", obs: "" },
-      { categoria: "Polo (EAD)", campo: "polo.endereco.complemento", descricao: "Complemento do endereço", tipo: "String", obrigatorio: "Não", baseUnif: "—", tabela: "—", exemplo: "", status: "gray", obs: "" },
-      { categoria: "Polo (EAD)", campo: "polo.endereco.bairro", descricao: "Bairro do polo", tipo: "String", obrigatorio: "Cond.*******", baseUnif: "—", tabela: "—", exemplo: "", status: "gray", obs: "Obrig. se informar dados do Polo" },
-      { categoria: "Polo (EAD)", campo: "polo.endereco.municipioCodigoIBGE", descricao: "Código IBGE do município", tipo: "String", obrigatorio: "Cond.*******", baseUnif: "—", tabela: "—", exemplo: "", status: "gray", obs: "Obrig. se informar dados do Polo" },
-      { categoria: "Polo (EAD)", campo: "polo.endereco.municipioDescricao", descricao: "Nome do município", tipo: "String", obrigatorio: "Cond.*******", baseUnif: "—", tabela: "—", exemplo: "", status: "gray", obs: "Obrig. se informar dados do Polo" },
-      { categoria: "Polo (EAD)", campo: "polo.endereco.uf", descricao: "UF do polo", tipo: "String", obrigatorio: "Cond.*******", baseUnif: "—", tabela: "—", exemplo: "", status: "gray", obs: "Obrig. se informar dados do Polo" },
-      { categoria: "Polo (EAD)", campo: "polo.endereco.cep", descricao: "CEP do polo", tipo: "String", obrigatorio: "Cond.*******", baseUnif: "—", tabela: "—", exemplo: "", status: "gray", obs: "Formato: 00000-000. Obrig. se informar dados do Polo" },
+      { api: "Emissao Diploma", categoria: "Polo (EAD)", campo: "polo.poloNome", descricao: "Nome do polo", tipo: "String", obrigatorio: "Cond.*******", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se informar dados do Polo" },
+      { api: "Emissao Diploma", categoria: "Polo (EAD)", campo: "polo.poloCodigoMEC", descricao: "Codigo MEC do polo", tipo: "String", obrigatorio: "Cond.*******", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se informar dados do Polo" },
+      { api: "Emissao Diploma", categoria: "Polo (EAD)", campo: "polo.endereco.logradouro", descricao: "Endereco do polo", tipo: "String", obrigatorio: "Cond.*******", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se informar dados do Polo" },
+      { api: "Emissao Diploma", categoria: "Polo (EAD)", campo: "polo.endereco.numero", descricao: "Numero do endereco", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Polo (EAD)", campo: "polo.endereco.complemento", descricao: "Complemento do endereco", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Emissao Diploma", categoria: "Polo (EAD)", campo: "polo.endereco.bairro", descricao: "Bairro do polo", tipo: "String", obrigatorio: "Cond.*******", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se informar dados do Polo" },
+      { api: "Emissao Diploma", categoria: "Polo (EAD)", campo: "polo.endereco.municipioCodigoIBGE", descricao: "Codigo IBGE do municipio", tipo: "String", obrigatorio: "Cond.*******", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se informar dados do Polo" },
+      { api: "Emissao Diploma", categoria: "Polo (EAD)", campo: "polo.endereco.municipioDescricao", descricao: "Nome do municipio", tipo: "String", obrigatorio: "Cond.*******", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se informar dados do Polo" },
+      { api: "Emissao Diploma", categoria: "Polo (EAD)", campo: "polo.endereco.uf", descricao: "UF do polo", tipo: "String", obrigatorio: "Cond.*******", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Obrig. se informar dados do Polo" },
+      { api: "Emissao Diploma", categoria: "Polo (EAD)", campo: "polo.endereco.cep", descricao: "CEP do polo", tipo: "String", obrigatorio: "Cond.*******", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Formato: 00000-000. Obrig. se informar dados do Polo" },
+
+      // ========================================
+      // API: ALTERACAO DE ALUNO (Dados Cadastrais)
+      // ========================================
+
+      // DADOS BASICOS
+      { api: "Alteracao de Aluno", categoria: "Dados Basicos", campo: "CPF", descricao: "CPF do estudante (identificador unico)", tipo: "String", obrigatorio: "Sim", baseUnif: "CPF", tabela: "ALUNO_CURSO", exemplo: "12345678901", status: "green", obs: "11 digitos, preservar zeros a esquerda" },
+      { api: "Alteracao de Aluno", categoria: "Dados Basicos", campo: "MATRICULA", descricao: "Codigo de registro unico do aluno", tipo: "String", obrigatorio: "Nao", baseUnif: "COD_ALUNO", tabela: "ALUNO_CURSO", exemplo: "19304438", status: "green", obs: "Nao pode ser alterado" },
+      { api: "Alteracao de Aluno", categoria: "Dados Basicos", campo: "NOME", descricao: "Nome completo do estudante", tipo: "String", obrigatorio: "Nao", baseUnif: "NOME_ALUNO", tabela: "ALUNO_CURSO", exemplo: "Joao da Silva", status: "green", obs: "Max 100 caracteres, permite acentuacao" },
+      { api: "Alteracao de Aluno", categoria: "Dados Basicos", campo: "NOME_SOCIAL", descricao: "Nome social do estudante", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Max 100 caracteres" },
+      { api: "Alteracao de Aluno", categoria: "Dados Basicos", campo: "DATA_NASCIMENTO", descricao: "Data de nascimento", tipo: "Data (ISO 8601)", obrigatorio: "Nao", baseUnif: "DT_NASCIMENTO", tabela: "ALUNO_CURSO", exemplo: "1990-05-15", status: "green", obs: "Formato: AAAA-MM-DD" },
+      { api: "Alteracao de Aluno", categoria: "Dados Basicos", campo: "GENERO", descricao: "Genero do estudante", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Valores: Masculino ou Feminino" },
+      { api: "Alteracao de Aluno", categoria: "Dados Basicos", campo: "ESTADO_CIVIL", descricao: "Estado civil", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Tabela Prime: 1-Casado, 2-Divorciado, 7-Solteiro..." },
+      { api: "Alteracao de Aluno", categoria: "Dados Basicos", campo: "RACA", descricao: "Raca/cor", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Tabela: 0-Nao Informado, 1-Branca, 2-Preta..." },
+      { api: "Alteracao de Aluno", categoria: "Dados Basicos", campo: "NACIONALIDADE", descricao: "Nacionalidade", tipo: "String", obrigatorio: "Nao", baseUnif: "NACIONALIDADE", tabela: "ALUNO_CURSO", exemplo: "1", status: "green", obs: "1-Brasileira, 2-Naturalizado, 3-Estrangeiro" },
+      { api: "Alteracao de Aluno", categoria: "Dados Basicos", campo: "NECESSIDADE_ESPECIAL", descricao: "Necessidade especial", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Tabela de necessidades especiais" },
+
+      // DOCUMENTOS
+      { api: "Alteracao de Aluno", categoria: "Documentos", campo: "RG/RNM/CRNM", descricao: "Numero do RG/RNM/CRNM", tipo: "String", obrigatorio: "Nao", baseUnif: "NUM_RG", tabela: "ALUNO_CURSO", exemplo: "4.136.463-7", status: "green", obs: "Pode conter digitos e tracos" },
+      { api: "Alteracao de Aluno", categoria: "Documentos", campo: "RG_ORGAO", descricao: "Orgao expedidor do RG", tipo: "String", obrigatorio: "Nao", baseUnif: "ORGAO_EXP", tabela: "ALUNO_CURSO", exemplo: "SSP", status: "green", obs: "Tabela padrao de referencia" },
+      { api: "Alteracao de Aluno", categoria: "Documentos", campo: "RG_UF", descricao: "UF do RG", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Sigla da UF" },
+      { api: "Alteracao de Aluno", categoria: "Documentos", campo: "RG_DATA_EMISSAO", descricao: "Data de emissao do RG", tipo: "Data (ISO 8601)", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Formato: AAAA-MM-DD" },
+      { api: "Alteracao de Aluno", categoria: "Documentos", campo: "DOC_MILITAR", descricao: "Documento militar", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Pode incluir numeros, letras e hifens" },
+      { api: "Alteracao de Aluno", categoria: "Documentos", campo: "DATA_EMISSAO_DOC_MILITAR", descricao: "Data emissao doc. militar", tipo: "Data (ISO 8601)", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Formato: AAAA-MM-DD" },
+      { api: "Alteracao de Aluno", categoria: "Documentos", campo: "TITULO_ELEITOR", descricao: "Titulo de eleitor", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "12 digitos" },
+      { api: "Alteracao de Aluno", categoria: "Documentos", campo: "ZONA_ELEITORAL", descricao: "Zona eleitoral", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "3 digitos" },
+      { api: "Alteracao de Aluno", categoria: "Documentos", campo: "SECAO_ELEITORAL", descricao: "Secao eleitoral", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "4 digitos" },
+      { api: "Alteracao de Aluno", categoria: "Documentos", campo: "CTPS", descricao: "Numero da CTPS", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Pode conter zeros a esquerda" },
+      { api: "Alteracao de Aluno", categoria: "Documentos", campo: "CTPS_SERIE", descricao: "Serie da CTPS", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "4-5 digitos" },
+
+      // CERTIDAO NASCIMENTO
+      { api: "Alteracao de Aluno", categoria: "Certidao Nascimento", campo: "CERTIDAO_NASCIMENTO", descricao: "Numero da certidao", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Formato varia conforme cartorio" },
+      { api: "Alteracao de Aluno", categoria: "Certidao Nascimento", campo: "LIVRO_CERTIDAO_NASC", descricao: "Livro da certidao", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Identificador do livro no cartorio" },
+      { api: "Alteracao de Aluno", categoria: "Certidao Nascimento", campo: "FOLHA_CERTIDAO_NASC", descricao: "Folha da certidao", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Pode ter zero a esquerda" },
+      { api: "Alteracao de Aluno", categoria: "Certidao Nascimento", campo: "UF_CERTIDAO_NASC", descricao: "UF da certidao", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Sigla da UF do registro" },
+      { api: "Alteracao de Aluno", categoria: "Certidao Nascimento", campo: "MUNICIPIO_CERTIDAO_NASC", descricao: "Municipio da certidao", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Nome do municipio de registro" },
+      { api: "Alteracao de Aluno", categoria: "Certidao Nascimento", campo: "DISTRITO_CERTIDAO_NASC", descricao: "Distrito da certidao", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Se aplicavel" },
+
+      // NATURALIDADE
+      { api: "Alteracao de Aluno", categoria: "Naturalidade", campo: "NATURAL_CIDADE", descricao: "Cidade de nascimento", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Permite acentuacao" },
+      { api: "Alteracao de Aluno", categoria: "Naturalidade", campo: "NATURAL_UF", descricao: "UF de nascimento", tipo: "String", obrigatorio: "Nao", baseUnif: "UF", tabela: "ALUNO_CURSO", exemplo: "SP", status: "yellow", obs: "Verificar se UF da base e de nascimento" },
+      { api: "Alteracao de Aluno", categoria: "Naturalidade", campo: "PAIS", descricao: "Pais de nascimento", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Tabela padrao de referencia" },
+      { api: "Alteracao de Aluno", categoria: "Naturalidade", campo: "COD_INEP_PAIS", descricao: "Codigo INEP do pais", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+
+      // GENITORES
+      { api: "Alteracao de Aluno", categoria: "Genitores", campo: "NOME_MAE", descricao: "Nome da mae", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Max 100 caracteres" },
+      { api: "Alteracao de Aluno", categoria: "Genitores", campo: "CPF_MAE", descricao: "CPF da mae", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "11 digitos" },
+      { api: "Alteracao de Aluno", categoria: "Genitores", campo: "NOME_PAI", descricao: "Nome do pai", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Max 100 caracteres" },
+      { api: "Alteracao de Aluno", categoria: "Genitores", campo: "CPF_PAI", descricao: "CPF do pai", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "11 digitos" },
+      { api: "Alteracao de Aluno", categoria: "Genitores", campo: "GereroGenitor", descricao: "Genero do genitor (pai)", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Alteracao de Aluno", categoria: "Genitores", campo: "GeneroGenitora", descricao: "Genero da genitora (mae)", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+
+      // RESPONSAVEL LEGAL
+      { api: "Alteracao de Aluno", categoria: "Responsavel Legal", campo: "NOME_RESP", descricao: "Nome do responsavel", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Max 100 caracteres" },
+      { api: "Alteracao de Aluno", categoria: "Responsavel Legal", campo: "CPF_RESP", descricao: "CPF do responsavel", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "11 digitos" },
+      { api: "Alteracao de Aluno", categoria: "Responsavel Legal", campo: "DATA_NASCIMENTO_RESP", descricao: "Data nascimento responsavel", tipo: "Data (ISO 8601)", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Formato: AAAA-MM-DD" },
+      { api: "Alteracao de Aluno", categoria: "Responsavel Legal", campo: "EMAIL_RESP", descricao: "E-mail do responsavel", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Formato valido" },
+      { api: "Alteracao de Aluno", categoria: "Responsavel Legal", campo: "GRAU_PARENTESCO_RESP", descricao: "Grau de parentesco", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+
+      // RESPONSAVEL FINANCEIRO
+      { api: "Alteracao de Aluno", categoria: "Responsavel Financeiro", campo: "RESP_FIN_MESMO_RESP", descricao: "Resp. financeiro = resp. legal?", tipo: "Boolean", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Valores: true ou false" },
+      { api: "Alteracao de Aluno", categoria: "Responsavel Financeiro", campo: "NOME_RESP_FIN", descricao: "Nome do resp. financeiro", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Max 100 caracteres" },
+      { api: "Alteracao de Aluno", categoria: "Responsavel Financeiro", campo: "CPF_RESP_FIN", descricao: "CPF do resp. financeiro", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "11 digitos" },
+      { api: "Alteracao de Aluno", categoria: "Responsavel Financeiro", campo: "DATA_NASCIMENTO_RESP_FIN", descricao: "Data nascimento resp. fin.", tipo: "Data (ISO 8601)", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Formato: AAAA-MM-DD" },
+      { api: "Alteracao de Aluno", categoria: "Responsavel Financeiro", campo: "EMAIL_RESP_FIN", descricao: "E-mail do resp. financeiro", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Formato valido" },
+      { api: "Alteracao de Aluno", categoria: "Responsavel Financeiro", campo: "GRAU_PARENTESCO_RESP_FIN", descricao: "Grau parentesco resp. fin.", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+
+      // ENDERECO
+      { api: "Alteracao de Aluno", categoria: "Endereco", campo: "ENDERECO", descricao: "Logradouro", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Nome da rua, avenida etc." },
+      { api: "Alteracao de Aluno", categoria: "Endereco", campo: "ENDERECO_NUMERO", descricao: "Numero", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Pode conter letras" },
+      { api: "Alteracao de Aluno", categoria: "Endereco", campo: "ENDERECO_COMPLEMENTO", descricao: "Complemento", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Alteracao de Aluno", categoria: "Endereco", campo: "ENDERECO_CEP", descricao: "CEP", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Alteracao de Aluno", categoria: "Endereco", campo: "ENDERECO_BAIRRO", descricao: "Bairro", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Alteracao de Aluno", categoria: "Endereco", campo: "ENDERECO_CIDADE", descricao: "Cidade", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Alteracao de Aluno", categoria: "Endereco", campo: "ENDERECO_UF", descricao: "UF", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Sigla da UF" },
+      { api: "Alteracao de Aluno", categoria: "Endereco", campo: "ENDERECO_PAIS", descricao: "Pais", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Alteracao de Aluno", categoria: "Endereco", campo: "COD_INEP_UF", descricao: "Codigo INEP da UF", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Alteracao de Aluno", categoria: "Endereco", campo: "COD_INEP_CIDADE", descricao: "Codigo INEP da cidade", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Alteracao de Aluno", categoria: "Endereco", campo: "COD_INEP_PAIS_END", descricao: "Codigo INEP do pais (endereco)", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+
+      // CONTATO
+      { api: "Alteracao de Aluno", categoria: "Contato", campo: "TELEFONE_RESIDENCIAL", descricao: "Telefone residencial", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Formato: (XX) XXXX-XXXX" },
+      { api: "Alteracao de Aluno", categoria: "Contato", campo: "TELEFONE_PRINCIPAL", descricao: "Telefone principal", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Formato: (XX) XXXX-XXXX" },
+      { api: "Alteracao de Aluno", categoria: "Contato", campo: "TELEFONE_COMERCIAL", descricao: "Telefone comercial", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Formato: (XX) XXXX-XXXX" },
+      { api: "Alteracao de Aluno", categoria: "Contato", campo: "CELULAR", descricao: "Celular", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Formato: (XX) 9XXXX-XXXX" },
+      { api: "Alteracao de Aluno", categoria: "Contato", campo: "EMAIL", descricao: "E-mail do estudante", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+
+      // ENSINO MEDIO
+      { api: "Alteracao de Aluno", categoria: "Ensino Medio", campo: "ESCOLA_ENS_MEDIO", descricao: "Escola do ensino medio", tipo: "String", obrigatorio: "Nao", baseUnif: "COL_ENS_MEDIO", tabela: "ALUNO_CURSO", exemplo: "", status: "green", obs: "Nome da instituicao" },
+      { api: "Alteracao de Aluno", categoria: "Ensino Medio", campo: "ANO_CONCLUSAO_ENS_MEDIO", descricao: "Ano conclusao ensino medio", tipo: "Integer", obrigatorio: "Nao", baseUnif: "ANO_CONC_ENS_MEDIO", tabela: "ALUNO_CURSO", exemplo: "2018", status: "green", obs: "Ano com 4 digitos (AAAA)" },
+      { api: "Alteracao de Aluno", categoria: "Ensino Medio", campo: "TIPO_ESCOLA", descricao: "Tipo de escola", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Valores: Publica ou Privada" },
+      { api: "Alteracao de Aluno", categoria: "Ensino Medio", campo: "COD_INEP_IE", descricao: "Codigo INEP da escola", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+
+      // PROFISSAO
+      { api: "Alteracao de Aluno", categoria: "Profissao", campo: "PROFISSAO", descricao: "Nome da profissao", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Tabela tipo_profissao" },
+      { api: "Alteracao de Aluno", categoria: "Profissao", campo: "ID_PROFISSAO", descricao: "ID da profissao", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+      { api: "Alteracao de Aluno", categoria: "Profissao", campo: "LOCAL_DE_TRABALHO", descricao: "Local de trabalho", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
+
+      // OUTROS
+      { api: "Alteracao de Aluno", categoria: "Outros", campo: "COD_EXPORTACAO_ORIGEM", descricao: "Chave de integracao", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "Chave externa para integracao" },
+      { api: "Alteracao de Aluno", categoria: "Outros", campo: "USUARIO", descricao: "Usuario do estudante", tipo: "String", obrigatorio: "Nao", baseUnif: "—", tabela: "—", exemplo: "", status: "red", obs: "" },
     ];
 
     const statusColors = {
-      green: { bg: "#dcfce7", text: "#166534", label: "OK" },
+      green: { bg: "#dcfce7", text: "#166534", label: "Sim" },
       yellow: { bg: "#fef9c3", text: "#854d0e", label: "Parcial" },
-      red: { bg: "#fee2e2", text: "#991b1b", label: "Faltando" },
-      gray: { bg: "#f3f4f6", text: "#4b5563", label: "N/O" }
+      red: { bg: "#fee2e2", text: "#991b1b", label: "Nao" }
     };
 
     function App() {
       const [data, setData] = useState(initialData);
       const [filter, setFilter] = useState("all");
       const [catFilter, setCatFilter] = useState("all");
+      const [apiFilter, setApiFilter] = useState("all");
+      const [obrigFilter, setObrigFilter] = useState("all");
       const [searchText, setSearchText] = useState("");
       const tableContainerRef = useRef(null);
 
@@ -308,15 +414,19 @@
       }, []);
 
       const categories = [...new Set(data.map(d => d.categoria))];
+      const apis = [...new Set(data.map(d => d.api))];
+      const obrigatorios = [...new Set(data.map(d => d.obrigatorio))];
 
       const filtered = data.filter(d => {
         const statusMatch = filter === "all" || d.status === filter;
         const catMatch = catFilter === "all" || d.categoria === catFilter;
+        const apiMatch = apiFilter === "all" || d.api === apiFilter;
+        const obrigMatch = obrigFilter === "all" || d.obrigatorio === obrigFilter;
         const searchLower = searchText.toLowerCase();
         const searchMatch = searchText === "" ||
           d.campo.toLowerCase().includes(searchLower) ||
           d.descricao.toLowerCase().includes(searchLower);
-        return statusMatch && catMatch && searchMatch;
+        return statusMatch && catMatch && apiMatch && obrigMatch && searchMatch;
       });
 
       const stats = {
@@ -324,13 +434,12 @@
         green: data.filter(d => d.status === "green").length,
         yellow: data.filter(d => d.status === "yellow").length,
         red: data.filter(d => d.status === "red").length,
-        gray: data.filter(d => d.status === "gray").length,
       };
 
       const generateCSV = () => {
-        let csv = "Categoria;Campo API;Descrição;Tipo;Obrigatório?;Campo Base Unif.;Tabela Origem;Exemplo;Status;Observação\n";
+        let csv = "API;Categoria;Campo API;Descricao;Tipo;Obrigatorio?;Campo Base Unif.;Tabela Origem;Exemplo;Existe na Base Unificada?;Observacao\n";
         data.forEach(row => {
-          csv += `${row.categoria};${row.campo};${row.descricao};${row.tipo || ""};${row.obrigatorio};${row.baseUnif};${row.tabela};${row.exemplo || ""};${statusColors[row.status].label};${row.obs}\n`;
+          csv += `${row.api};${row.categoria};${row.campo};${row.descricao};${row.tipo || ""};${row.obrigatorio};${row.baseUnif};${row.tabela};${row.exemplo || ""};${statusColors[row.status].label};${row.obs}\n`;
         });
         return csv;
       };
@@ -341,7 +450,7 @@
         const url = URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = url;
-        link.download = 'mapeamento_api_2via_base_unificada.csv';
+        link.download = 'mapeamento_apis_base_unificada.csv';
         link.click();
         URL.revokeObjectURL(url);
       };
@@ -349,7 +458,7 @@
       return (
         <div className="p-4 max-w-full overflow-x-auto text-base">
           <div className="flex justify-between items-center mb-3 flex-wrap gap-2">
-            <h1 className="text-xl font-bold">Mapeamento: API 2ª Via x Base Unificada</h1>
+            <h1 className="text-xl font-bold">Mapeamento: APIs x Base Unificada</h1>
             <button
               onClick={downloadCSV}
               className="px-4 py-2 bg-green-600 text-white rounded text-sm hover:bg-green-700"
@@ -361,7 +470,7 @@
           <div className="flex flex-wrap gap-2 mb-4">
             <div className="flex items-center gap-1 px-3 py-1 bg-green-100 rounded text-sm">
               <span className="w-3 h-3 bg-green-500 rounded-full"></span>
-              <span>OK: {stats.green}</span>
+              <span>Sim: {stats.green}</span>
             </div>
             <div className="flex items-center gap-1 px-3 py-1 bg-yellow-100 rounded text-sm">
               <span className="w-3 h-3 bg-yellow-500 rounded-full"></span>
@@ -369,33 +478,47 @@
             </div>
             <div className="flex items-center gap-1 px-3 py-1 bg-red-100 rounded text-sm">
               <span className="w-3 h-3 bg-red-500 rounded-full"></span>
-              <span>Faltando: {stats.red}</span>
+              <span>Nao: {stats.red}</span>
             </div>
-            <div className="flex items-center gap-1 px-3 py-1 bg-gray-100 rounded text-sm">
-              <span className="w-3 h-3 bg-gray-400 rounded-full"></span>
-              <span>N/O: {stats.gray}</span>
-            </div>
-            <span className="px-3 py-1 bg-blue-100 rounded text-sm font-medium">Total: {stats.total}</span>
+            <span className="px-3 py-1 bg-purple-100 rounded text-sm font-medium">Total: {stats.total}</span>
           </div>
 
           <div className="flex gap-2 mb-4 flex-wrap">
             <input
               type="text"
-              placeholder="Buscar campo ou descrição..."
+              placeholder="Buscar campo ou descricao..."
               className="border rounded px-3 py-2 text-sm w-64"
               value={searchText}
               onChange={e => setSearchText(e.target.value)}
             />
+
+            <select
+              className="border rounded px-3 py-2 text-sm bg-purple-50 font-medium"
+              value={apiFilter}
+              onChange={e => setApiFilter(e.target.value)}
+            >
+              <option value="all">Todas as APIs</option>
+              {apis.map(a => <option key={a} value={a}>{a}</option>)}
+            </select>
+
             <select
               className="border rounded px-3 py-2 text-sm"
               value={filter}
               onChange={e => setFilter(e.target.value)}
             >
-              <option value="all">Todos os Status</option>
-              <option value="green">OK</option>
+              <option value="all">Existe na Base? (Todos)</option>
+              <option value="green">Sim</option>
               <option value="yellow">Parcial</option>
-              <option value="red">Faltando</option>
-              <option value="gray">Não Obrigatório</option>
+              <option value="red">Nao</option>
+            </select>
+
+            <select
+              className="border rounded px-3 py-2 text-sm"
+              value={obrigFilter}
+              onChange={e => setObrigFilter(e.target.value)}
+            >
+              <option value="all">Obrigatorio? (Todos)</option>
+              {obrigatorios.map(o => <option key={o} value={o}>{o}</option>)}
             </select>
 
             <select
@@ -408,21 +531,22 @@
             </select>
           </div>
 
-          <p className="text-xs text-gray-500 mb-1">🖐️ Clique e arraste para navegar</p>
-          <div ref={tableContainerRef} className="drag-scroll border rounded-lg" style={{ maxHeight: "calc(100vh - 280px)" }}>
-            <table className="w-full border-collapse text-sm min-w-[1400px]">
+          <p className="text-xs text-gray-500 mb-1">Clique e arraste para navegar</p>
+          <div ref={tableContainerRef} className="drag-scroll border rounded-lg" style={{ maxHeight: "calc(100vh - 300px)" }}>
+            <table className="w-full border-collapse text-sm min-w-[1600px]">
               <thead>
                 <tr className="bg-gray-800 text-white">
+                  <th className="p-2 text-left">API</th>
                   <th className="p-2 text-left">Categoria</th>
                   <th className="p-2 text-left col-campo-api">Campo API</th>
-                  <th className="p-2 text-left">Descrição</th>
+                  <th className="p-2 text-left">Descricao</th>
                   <th className="p-2 text-left">Tipo</th>
                   <th className="p-2 text-center">Obrig.?</th>
                   <th className="p-2 text-left">Campo Base Unif.</th>
                   <th className="p-2 text-left">Tabela</th>
                   <th className="p-2 text-left">Exemplo</th>
-                  <th className="p-2 text-center">Status</th>
-                  <th className="p-2 text-left">Observação</th>
+                  <th className="p-2 text-center">Existe na Base Unificada?</th>
+                  <th className="p-2 text-left">Observacao</th>
                 </tr>
               </thead>
               <tbody>
@@ -431,6 +555,7 @@
                     key={i}
                     className="border-b hover:bg-gray-50"
                   >
+                    <td className="p-2 font-medium text-purple-700">{row.api}</td>
                     <td className="p-2 font-medium">{row.categoria}</td>
                     <td className="p-2 font-mono text-sm col-campo-api">{row.campo}</td>
                     <td className="p-2">{row.descricao}</td>
@@ -458,24 +583,50 @@
           </div>
 
           <div className="mt-4 text-sm text-gray-600 bg-gray-50 p-4 rounded">
-            <p className="font-bold mb-2">Legenda de Obrigatoriedade:</p>
+            <p className="font-bold mb-2">Legenda de Obrigatoriedade (API Emissao Diploma):</p>
             <div className="grid grid-cols-2 gap-1">
-              <p>* Obrigatório apenas para brasileiros</p>
-              <p>** Não obrigatório quando tipo é RG</p>
-              <p>*** Obrigatório se desejar informar forma de ingresso</p>
-              <p>**** Obrigatório se informar atividade complementar</p>
-              <p>***** Obrigatório se desejar informar dados do ENADE</p>
-              <p>****** Obrigatório desde que não esteja em tramitação</p>
-              <p>******* Obrigatório se desejar informar dados do Polo (EAD)</p>
-              <p>******** Obrig. Diploma/Hist. Formado, não obrig. hist. parcial</p>
-              <p>********* Obrig. se houver renovação do reconhecimento</p>
-              <p>********** Obrig. se credenciamento vencido ou em tramitação</p>
+              <p>* Obrigatorio apenas para brasileiros</p>
+              <p>** Nao obrigatorio quando tipo e RG</p>
+              <p>*** Obrigatorio se desejar informar forma de ingresso</p>
+              <p>**** Obrigatorio se informar atividade complementar</p>
+              <p>***** Obrigatorio se desejar informar dados do ENADE</p>
+              <p>****** Obrigatorio desde que nao esteja em tramitacao</p>
+              <p>******* Obrigatorio se desejar informar dados do Polo (EAD)</p>
+              <p>******** Obrig. Diploma/Hist. Formado, nao obrig. hist. parcial</p>
+              <p>********* Obrig. se houver renovacao do reconhecimento</p>
+              <p>********** Obrig. se credenciamento vencido ou em tramitacao</p>
+            </div>
+          </div>
+
+          <div className="mt-4 text-sm bg-blue-50 p-4 rounded border border-blue-200">
+            <p className="font-bold mb-2 text-blue-800">Legenda de Status:</p>
+            <div className="grid grid-cols-2 md:grid-cols-5 gap-2">
+              <div className="flex items-center gap-2">
+                <span className="px-2 py-1 rounded text-xs font-medium" style={{backgroundColor: "#dcfce7", color: "#166534"}}>OK</span>
+                <span>Campo existe e mapeia corretamente</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="px-2 py-1 rounded text-xs font-medium" style={{backgroundColor: "#fef9c3", color: "#854d0e"}}>Parcial</span>
+                <span>Existe mas precisa tratamento</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="px-2 py-1 rounded text-xs font-medium" style={{backgroundColor: "#fee2e2", color: "#991b1b"}}>Faltando</span>
+                <span>Obrigatorio que NAO existe</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="px-2 py-1 rounded text-xs font-medium" style={{backgroundColor: "#f3f4f6", color: "#4b5563"}}>N/O</span>
+                <span>Nao obrigatorio, nao existe</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="px-2 py-1 rounded text-xs font-medium" style={{backgroundColor: "#dbeafe", color: "#1e40af"}}>Analisar</span>
+                <span>Precisa verificacao manual</span>
+              </div>
             </div>
           </div>
 
           <div className="mt-6 text-sm bg-blue-50 p-4 rounded border border-blue-200">
-            <p className="font-bold mb-3 text-blue-800 text-base">Campos da Base Unificada NÃO Utilizados na API:</p>
-            <p className="text-gray-600 mb-4 italic">Estes campos existem no banco mas não são mapeados para nenhum campo da API. Podem ser úteis para outros fins.</p>
+            <p className="font-bold mb-3 text-blue-800 text-base">Campos da Base Unificada NAO Utilizados nas APIs:</p>
+            <p className="text-gray-600 mb-4 italic">Estes campos existem no banco mas nao sao mapeados para nenhum campo das APIs. Podem ser uteis para outros fins.</p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
               <div className="bg-white p-3 rounded shadow-sm">
@@ -490,11 +641,9 @@
                   <li className="font-mono">COD_ALUNO_CURSO</li>
                   <li className="font-mono">RECONHECIMENTO</li>
                   <li className="font-mono">INFO_INGRESSO</li>
-                  <li className="font-mono">COL_ENS_MEDIO</li>
                   <li className="font-mono">ESTADO_ENS_MEDIO</li>
                   <li className="font-mono">CDDE_ENS_MEDIO</li>
                   <li className="font-mono">PAIS_ENS_MEDIO</li>
-                  <li className="font-mono">ANO_CONC_ENS_MEDIO</li>
                   <li className="font-mono">SIT_AFASTAMENTO</li>
                   <li className="font-mono">DATA_AFASTAMENTO</li>
                   <li className="font-mono">CAMPUS</li>
@@ -527,10 +676,10 @@
             <div className="mt-4 pt-3 border-t border-blue-200">
               <p className="text-xs text-gray-500">
                 <span className="font-bold">Resumo:</span>
-                ALUNO_CURSO: 13 campos não utilizados |
-                CURSO: 2 campos não utilizados |
-                HISTORICO_ESCOLAR: 7 campos não utilizados |
-                <span className="font-bold text-blue-700">Total: 22 campos disponíveis</span>
+                ALUNO_CURSO: 11 campos nao utilizados |
+                CURSO: 2 campos nao utilizados |
+                HISTORICO_ESCOLAR: 7 campos nao utilizados |
+                <span className="font-bold text-blue-700">Total: 20 campos disponiveis</span>
               </p>
             </div>
           </div>
